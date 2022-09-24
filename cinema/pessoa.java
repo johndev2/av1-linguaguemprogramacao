@@ -4,10 +4,7 @@
  */
 package cinema;
 
-/**
- *
- * @author johnv
- */
+
 public class pessoa {
     public String nome;
     private int CPF;
@@ -37,6 +34,9 @@ public class pessoa {
         this.descricao = descricao;
     }
     
+    public pessoa(){
+        
+    }
     
     
 }

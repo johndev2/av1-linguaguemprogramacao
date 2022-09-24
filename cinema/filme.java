@@ -4,10 +4,7 @@
  */
 package cinema;
 
-/**
- *
- * @author johnv
- */
+
 public class filme {
     public String titulo_orig;
     public String titulo_trad;
@@ -31,6 +28,8 @@ public class filme {
         this.Id = id;
     }
 
+    public filme() {
+    }
 
     public String getTitulo_orig() {
 		return titulo_orig;
