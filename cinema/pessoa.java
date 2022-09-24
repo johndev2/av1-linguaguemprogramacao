@@ -15,6 +15,8 @@ public class pessoa {
     public String nacionalidade;
     public String descricao;
 
+    
+
     public pessoa(String nome, int CPF, String endereco, String nacionalidade, String descricao) {
         this.nome = nome;
         this.CPF = CPF;
