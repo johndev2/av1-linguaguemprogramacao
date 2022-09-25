@@ -5,6 +5,7 @@
 package cinema;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class filme {
     public String titulo_orig;
@@ -30,7 +31,7 @@ public class filme {
 		this.sinopse = sinopse;
 		this.nacionalidade = nacionalidade;
 		this.tam_filme = tam_filme;
-		Id = id;
+		this.Id = id;
 		this.atores = atores;
 		this.diretores = diretores;
 	}
@@ -49,7 +50,72 @@ public class filme {
 		}
     }
 
+	// public void cadastro_filme(){
+	// 	int opc;
+	// 	Scanner s = new Scanner(System.in);
+	// 	filme fi = new filme();
+	// 	System.out.print("\n1-Sim\n2-Não\nO filme é nacional?");
+	// 	opc = s.nextInt();
+	// 	System.out.print("Informe o titulo original do filme: ");
+	// 	fi.titulo_orig=s.next();
+	// 	if(opc==2){
+	// 		System.out.print("Informe o titulo traduzido do filme: ");
+	// 		fi.titulo_trad=s.next();
+	// 	}
+	// 	System.out.print("Informe o genero do filme: ");
+	// 	fi.genero=s.next();
+	// 	System.out.print("Informe o tamanho do filme: ");
+	// 	fi.tam_filme=s.nextFloat();
+	// 	System.out.print("Informe a nacionalidade do filme: ");
+	// 	fi.nacionalidade=s.next();
+	// 	System.out.print("Informe o codigo do filme: ");
+	// 	fi.Id=s.nextInt();
+	// 	ator a = new ator();
+	// 	do{ //classe ator ( nome, nacionalide, descrição(o que ele fez))
+	// 		System.out.print("Informe o nome do ator: ");
+	// 		a.nome=s.next();
+	// 		System.out.print("Informe a nacionalidade do ator: ");
+	// 		a.nacionalidade=s.next();
+	// 		System.out.print("Informe o endereco do ator: ");
+	// 		a.endereco=s.next();
+	// 		System.out.print("Informe a descricao do ator: ");
+	// 		a.descricao=s.next();
+	// 		System.out.print("Informe o codigo do ator: ");
+	// 		a.codigo = s.nextInt();
+	// 		if(a.nacionalidade == "brasileira"){
+	// 			System.out.print("Informe o cpf do ator: ");
+	// 			a.CPF = s.nextInt();
+	// 		}
+	// 		ator ator = new ator(a.nome, a.nacionalidade, a.descricao, a.codigo);
+	// 		System.out.println("Deseja cadastra outro ator? (1-Sim 2 -Nao)");
+	// 		opc = s.nextInt();
+	// 		listaAtores.add(ator);
+	// 	}while(opc!=2);
+	// 	diretor d =new diretor();
+	// 	do{ //classe diretor( nome, nacionalide, descrição( o que ele fez))
+	// 		System.out.print("Informe o nome do Diretor: ");
+	// 		d.nome=s.next();
+	// 		System.out.print("Informe a nacionalidade do diretor: ");
+	// 		d.nacionalidade=s.next();
+	// 		System.out.print("Informe a descricao do diretor: ");
+	// 		d.descricao=s.next();
+	// 		System.out.print("Informe o endereco do ator: ");
+	// 		d.endereco=s.next();
+	// 		System.out.print("Informe o codigo do diretor: ");
+	// 		d.codigo = s.nextInt();
+	// 		diretor diretor = new diretor(d.nome, d.nacionalidade, d.descricao, d.codigo);
+	// 		System.out.print("Deseja cadastra outro diretor? (1-Sim 2 -Nao)");
+	// 		opc = s.nextInt();
+	// 		listaDiretores.add(diretor);
+	// 	}while(opc!=2);
+	// 	//filme(String titulo_orig, String titulo_trad, String genero, String sinopse, String nacionalidade,float tam_filme, int id, ArrayList<ator> atores, ArrayList<diretor> diretores)
+	// 	filme filme = new filme(fi.titulo_orig,fi.titulo_trad,fi.genero,fi.sinopse,fi.nacionalidade,fi.tam_filme,fi.Id,listaAtores,listaDiretores);
+	// 	listaFilme.add(filme);
+	// 	System.out.println("Cadastro efetuado com Sucesso!"); 
+	// 	}
+
 }
+
 
 
 // classe cinema ( localiza no brasil )
