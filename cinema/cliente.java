@@ -2,21 +2,36 @@ package cinema;
  
 
 public class cliente extends pessoa{
-    public String endereco;
-    public String nome;
-    public int CPF;
-
-
+    public int id;
     
 
-    /**
-     * @param endereco
-     * @param nome
-     * @param CPF
-     */
-    public cliente(String endereco, String nome, int CPF) {
+    public cliente(){
+    }
+
+
+    public cliente(String nome, int CPF, String endereco, String nacionalidade, String descricao, int id) {
+        super(nome, CPF, endereco, nacionalidade, descricao);
+        this.id = id;
+    }
+
+
+    public cliente(String nome, int CPF, String endereco, int id) {
         super(nome, CPF, endereco);
-    } 
+        this.id = id;
+    }
+
+
+    public cliente(String nome, String nacionalidade, String descricao, int id) {
+        super(nome, nacionalidade, descricao);
+        this.id = id;
+    }
+
+
+    public cliente(int id) {
+        this.id = id;
+    }
+
+    
     
     
 }

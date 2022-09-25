@@ -38,6 +38,7 @@ public class Interface {
         ArrayList<sessao> listaSessao = new ArrayList<sessao>();      
         ArrayList<sala> listaSala = new ArrayList<sala>();      
         ArrayList<filme> listaFilme = new ArrayList<filme>();      
+        ArrayList<compra> listaCompra = new ArrayList<compra>();      
         do{
         System.out.print("------------------------\n1- Dono;\n2- Cliente\nVocê eh cliente ou dono: ");
             // dono - cadastrar filial, filmes;
@@ -66,7 +67,7 @@ public class Interface {
                             System.out.print("\n1-Sim\n2-Não\nO filme é nacional?");
                             opc = s.nextInt();
                             System.out.print("Informe o titulo original do filme: ");
-                            fi.titulo_orig=s.next();
+                            fi.titulo_orig=s.nextLine();
                             if(opc==2){
                                 System.out.print("Informe o titulo traduzido do filme: ");
                                 fi.titulo_trad=s.next();
@@ -85,8 +86,6 @@ public class Interface {
                                 a.nome=s.next();
                                 System.out.print("Informe a nacionalidade do ator: ");
                                 a.nacionalidade=s.next();
-                                System.out.print("Informe o endereco do ator: ");
-                                a.endereco=s.next();
                                 System.out.print("Informe a descricao do ator: ");
                                 a.descricao=s.next();
                                 System.out.print("Informe o codigo do ator: ");
@@ -169,7 +168,7 @@ public class Interface {
                                 System.out.print("Informe o horario da sessao: ");
                                 st.horario= s.next();
                                 for(int t=0;t<listaSala.size();t++){
-                                    if(listaSala.get(t).Id == st.idSa){
+                                    if(listaSala.get(t).idSala == st.idSa){
                                         st.titulo_orig = listaSala.get(t).titulo_orig;
                                         st.titulo_trad = listaSala.get(t).titulo_trad;
                                         st.genero = listaSala.get(t).genero;
@@ -202,17 +201,44 @@ public class Interface {
                 opcC = s.nextInt();
                 switch (opcC) {
                     case 1:
-                            System.out.print("Informe o codigo do filme que deseja: ");
-                            cliente_escolha = s.nextInt();
-                            int i=0;
-                            while(cursor = true){
-                                if(listaFilme.get(i).Id == cliente_escolha) cursor = false;
-                                i++;
-                            }
+                            int w;
+                            cliente clt = new cliente();
+                            System.out.println("");
+                            System.out.println("Cod_ Sessao | Nº sala | Titulo filme | Horario |");
+                            for(int i = 0; i< listaSessao.size();i++){
+                            System.out.println(listaSessao.get(i).idSa+ " | " +listaSessao.get(i).nomeSala+ " | "+listaSessao.get(i).titulo_orig+ " | "+listaSessao.get(i).horario);                        
+                            }      
+                            System.out.print("Deseja efetuar a compra do ingresso (1- Sim 2- Nao)? ");  
+                            w = s.nextInt();
+                            if(w == 1){
+                                System.out.print(" Informe o nome: ");
+                                clt.nome = s.next();
+                                System.out.print(" Informe o cpf: ");
+                                clt.CPF = s.nextInt();
+                                System.out.print(" Informe o enderco: ");
+                                clt.endereco = s.next();
+                                System.out.print("Informe a sessao do filme que deseja: ");
+                                cliente_escolha = s.nextInt();
+                                compra c = new compra();
+                                for(int t=0;t<listaSessao.size();t++){
+                                    if(listaSessao.get(t).idSa == cliente_escolha){
+                                        c.cod_sessao= listaSessao.get(t).idSa;
+                                        c.filme = listaSessao.get(t).titulo_orig;
+                                        listaSessao.get(t).capacidade-=1;
+                                        break;
+                                    }
+                                    int x=t+1;
+                                    if(x>= listaSessao.size()){
+                                    System.out.println("Compra invalida");
+                                    } 
+                                }
+                                compra compra =new compra(id,clt.nome, clt.CPF, c.cod_sessao, c.filme);
+                                listaCompra.add(compra);
+                            }      
                         break;
                     case 2://filme(String titulo_orig, String titulo_trad, String genero, String sinopse, String nacionalidade,float tam_filme, int id, ArrayList<ator> atores, ArrayList<diretor> diretores)
                             System.out.println("");
-                            for( i = 0; i< listaFilme.size();i++){
+                            for(int  i = 0; i< listaFilme.size();i++){
                                 System.out.println(listaFilme.get(i).Id+" | "+listaFilme.get(i).titulo_orig+" | "+listaFilme.get(i).titulo_trad+" | "+listaFilme.get(i).nacionalidade+" | "+listaFilme.get(i).tam_filme+ " | "+listaFilme.get(i).genero+" | "+listaFilme.get(i).sinopse+" | ");
                                 System.out.print("Atores: ");
                                 listaFilme.get(i).exibirAtores();
@@ -223,7 +249,7 @@ public class Interface {
                     case 3:
                         System.out.println("");
                         System.out.println("Nº sala| Titulo filme | Horario |");
-                        for( i = 0; i< listaSessao.size();i++){
+                        for(int i = 0; i< listaSessao.size();i++){
                             System.out.println(listaSessao.get(i).nomeSala+ " | "+listaSessao.get(i).titulo_orig+ " | "+listaSessao.get(i).horario);                        
                         }
                         break;
