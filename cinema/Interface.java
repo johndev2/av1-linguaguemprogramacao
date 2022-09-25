@@ -1,10 +1,12 @@
 package cinema;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 import java.util.Scanner;
 import cinema.filme;
 import cinema.pessoa;
 import cinema.filial;
+import java.util.Random;
 
 /*
 classe cinema ( localiza no brasil )
@@ -232,7 +234,10 @@ public class Interface {
                                     System.out.println("Compra invalida");
                                     } 
                                 }
-                                compra compra =new compra(id,clt.nome, clt.CPF, c.cod_sessao, c.filme);
+                                Random numid = new Random();
+                                c.id = numid.nextInt(9999);
+                                System.out.println("O codigo de compra : "+c.id);
+                                compra compra =new compra(c.id,clt.nome, clt.CPF, c.cod_sessao, c.filme);
                                 listaCompra.add(compra);
                             }      
                         break;
