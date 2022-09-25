@@ -1,7 +1,4 @@
 package cinema;
-
-// package interface;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -28,7 +25,6 @@ classe sessao( sala + filme + horario + clientes)
 
 
 public class Interface {    
-
     public static void main(String [] args){
         int opcao=0, opcD=0,opcC=0, opcao2=0,opc;        
         Scanner s = new Scanner(System.in);
@@ -36,11 +32,10 @@ public class Interface {
         ArrayList<filial> listaFilial = new ArrayList<filial>(); 
         ArrayList<pessoa> listaPessoa = new ArrayList<pessoa>();
         ArrayList<cliente> listaCliente = new ArrayList<cliente>();
-        ArrayList<diretor> listaDiretor = new ArrayList<diretor>();        
+        ArrayList<diretor> listaDiretores = new ArrayList<diretor>();        
+        ArrayList<ator> listaAtores = new ArrayList<ator>();        
         ArrayList<sessao> listaSessao = new ArrayList<sessao>();      
         ArrayList<filme> listaFilme = new ArrayList<filme>();      
-        
-        
         do{
         System.out.println("1- Dono;\n2- Cliente\nVocê eh cliente ou dono:");
             // dono - cadastrar filial, filmes;
@@ -77,7 +72,7 @@ public class Interface {
                             System.out.println("Informe o genero do filme:");
                             fi.genero=s.next();
                             System.out.println("Informe o tamanho do filme:");
-                            fi.tam_filme=s.nextInt();
+                            fi.tam_filme=s.nextFloat();
                             System.out.println("Informe a nacionalidade do filme:");
                             fi.nacionalidade=s.next();
                             System.out.println("Informe o codigo do filme:");
@@ -95,70 +90,66 @@ public class Interface {
                                 ator ator = new ator(a.nome, a.nacionalidade, a.descricao, a.codigo);
                                 System.out.println("Deseja cadastra outro ator? (1-Sim)");
                                 opc = s.nextInt();
-                                
+                                listaAtores.add(ator);
                             }while(opc!=2);
                             diretor d =new diretor();
                             do{ //classe diretor( nome, nacionalide, descrição( o que ele fez))
-                                System.out.println("Informe o nome do Direto:");
+                                System.out.println("Informe o nome do Diretor:");
                                 d.nome=s.next();
-                                System.out.println("Informe a nacionalidade do direto:");
+                                System.out.println("Informe a nacionalidade do diretor:");
                                 d.nacionalidade=s.next();
                                 System.out.println("Informe a descricao do diretor:");
                                 d.descricao=s.next();
                                 System.out.println("Informe o codigo do diretor");
                                 d.codigo = s.nextInt();
-                                ator ator = new ator(a.nome, a.nacionalidade, a.descricao, a.codigo);
+                                diretor diretor = new diretor(a.nome, a.nacionalidade, a.descricao, a.codigo);
                                 System.out.println("Deseja cadastra outro diretor? (1-Sim)");
                                 opc = s.nextInt();
+                                listaDiretores.add(diretor);
                             }while(opc!=2);
-                            filme filme = new filme(fi.titulo_orig);
+                            //filme(String titulo_orig, String titulo_trad, String genero, String sinopse, String nacionalidade,float tam_filme, int id, ArrayList<ator> atores, ArrayList<diretor> diretores)
+                            filme filme = new filme(fi.titulo_orig,fi.titulo_trad,fi.genero,fi.sinopse,fi.nacionalidade,fi.tam_filme,fi.Id,listaAtores,listaDiretores);
                             listaFilme.add(filme);
                             System.out.println("Cadastro efetuado com Sucesso!");                    
                         break;
-                    // case 3:
+                    case 3:
+                            
                         
-                    //     break;
-                    // case 4:
+                        break;
+                    case 4:
+                            
                         
-                    //     break;
+                        break;
                 }
 
                 break;
             case 2:
-                // System.out.println("Digite a a opção desejada:\n1- Comprar ingresso\n2- Mostrar lista de filmes\n3- Escolher filme e horario");
-                // opcC = s.nextInt();
-                // switch (key) {
-                //     case value:
+                System.out.println("Digite a a opção desejada:\n1- Comprar ingresso\n2- Mostrar lista de filmes\n3- Escolher filme e horario");
+                opcC = s.nextInt();
+                switch (opcC) {
+                    case 1:
                         
-                //         break;
-                //     case value:
+                        break;
+                    case 2://filme(String titulo_orig, String titulo_trad, String genero, String sinopse, String nacionalidade,float tam_filme, int id, ArrayList<ator> atores, ArrayList<diretor> diretores)
+                            System.out.println("");
+                            for(int i = 0; i<= listaFilme.size();i++){
+                                System.out.println(listaFilme.get(i).titulo_orig+" | "+listaFilme.get(i).titulo_trad+" | "+listaFilme.get(i).nacionalidade+" | "+listaFilme.get(i).tam_filme+ " | "+listaFilme.get(i).genero+" | "+listaFilme.get(i).sinopse+" | "+listaFilme.get(i)+" | ");
+                                System.out.println("Atores:");
+                                listaFilme.get(i).exibirAtores();
+                                System.out.println("Diretores:");
+                                listaFilme.get(i).exibirDiretores();
+
+                            }
                         
-                //         break;
+                        break;
                 
-                //     default:
-                //         break;
-                // }
+                    case 3:
+                        break;
+                }
                 
-                // break;  
+                break;  
         }
                             
-            
-        //     Funcionario f = new Funcionario();
-        //     System.out.println("Informe o nome do funcionário:");
-        //     f.nome = s.next();
-        //     System.out.println("Informe a matricula do funcionário:");
-        //     f.matricula=s.nextInt();
-        //     Funcionario funcionario = new Funcionario(f.nome, f.matricula);
-        //     System.out.println("Informe a área do funcionário:");
-        //     gerente = new Gerente(funcionario.nome, funcionario.matricula, s.next());
-        //     listaGerente.add(gerente);
-        //     System.out.println("\n Deseja Continuar: 1-Sim, 2-Não");
-        //     opcao = s.nextInt();
-        // }while(opcao != 0);
-        // for (int i = 0; i <listaGerente.size(); i++) {
-        //     System.out.println(""+listaGerente.get(i).nome);   
-        //     System.out.println(""+listaGerente.get(i).area);
-        //     System.out.println(""+listaGerente.get(i).matricula);  
         System.out.println("-------------------------------------");
         System.out.println("\nFinalizado!\n1-Sim\n2-Não\nDeseja Continuar:");
         opcao2 = s.nextInt(); 

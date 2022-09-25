@@ -1,18 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cinema;
-
-
 public class pessoa {
     public String nome;
-    private int CPF;
+    public int CPF;
     public String endereco;
     public String nacionalidade;
     public String descricao;
 
-    
 
     public pessoa(String nome, int CPF, String endereco, String nacionalidade, String descricao) {
         this.nome = nome;
@@ -35,7 +28,7 @@ public class pessoa {
     }
     
     public pessoa(){
-        
+
     }
     
     
