@@ -56,13 +56,15 @@ public class Interface {
                             if(opc==2){
                                 System.out.print("Informe o titulo traduzido do filme: ");
                                 fi.titulo_trad=s.next();
+                                System.out.print("Informe a nacionalidade do filme: ");
+                                fi.nacionalidade=s.next();
+                            }else{
+                                fi.nacionalidade = "brasileiro";
                             }
                             System.out.print("Informe o genero do filme: ");
                             fi.genero=s.next();
                             System.out.print("Informe o tamanho do filme: ");
-                            fi.tam_filme=s.nextFloat();
-                            System.out.print("Informe a nacionalidade do filme: ");
-                            fi.nacionalidade=s.next();
+                            fi.tam_filme=s.nextFloat();                            
                             System.out.print("Informe o codigo do filme: ");
                             fi.Id=s.nextInt();
                             ator a = new ator();
@@ -106,6 +108,10 @@ public class Interface {
                         break;
                     case 3:
                             do{
+                                if(listaFilme.size() ==0){
+                                    System.out.println("Nao ha filmes cadastrados!");
+                                    break;
+                                }
                                 sala sa = new sala();
                                 filme fs = new filme();
                                 filial fl = new filial();
@@ -143,9 +149,13 @@ public class Interface {
                                 System.out.print("Deseja cadastra outra sala? (1-Sim 2 -Nao)");
                                 opc = s.nextInt();                              
                             }while(opc!=2);
-                                System.out.println( "nome: "+ listaSala.get(0).nomeSala+ " filme: "+ listaSala.get(0).titulo_orig);
+                                // System.out.println( "nome: "+ listaSala.get(0).nomeSala+ " filme: "+ listaSala.get(0).titulo_orig);
                         break;
                     case 4:
+                            if(listaSala.size() ==0){
+                                System.out.println("Nao ha sala cadastrados!");
+                                break;
+                            }
                             sessao st = new sessao();
                             do{
                                 System.out.println("---------------------------\nCadastro Sessão!");
@@ -180,6 +190,7 @@ public class Interface {
                             }while(opc!=2);
                         break;
                     case 5: //(int id, String nome, int cpf_cliente, int cod_sessao, String filme)
+                                System.out.println("Nº compra | Nome | cpf | filme | cod_sala");
                                 for(int y = 0; y< listaCompra.size(); y++){
                                     System.out.println(listaCompra.get(y).id + " | " + listaCompra.get(y).nome + " | "+ listaCompra.get(y).cpf_cliente+" | " +listaCompra.get(y).filme + " | " +listaCompra.get(y).cod_sessao);
                                 }
@@ -194,9 +205,9 @@ public class Interface {
                             int w;
                             cliente clt = new cliente();
                             System.out.println("");
-                            System.out.println("Cod_ Sessao | Nº sala | Titulo filme | Horario |");
+                            System.out.println("Cod_ Sessao  |   Nº sala   |   Titulo filme   |  Horario  |  Cadeiras vazias  ");
                             for(int i = 0; i< listaSessao.size();i++){
-                            System.out.println(listaSessao.get(i).idSa+ " | " +listaSessao.get(i).nomeSala+ " | "+listaSessao.get(i).titulo_orig+ " | "+listaSessao.get(i).horario);                        
+                            System.out.println(listaSessao.get(i).idSa+ " | " +listaSessao.get(i).nomeSala+ " | "+listaSessao.get(i).titulo_orig+ " | "+listaSessao.get(i).horario+ " | "+listaSessao.get(i).capacidade);                        
                             }      
                             System.out.print("Deseja efetuar a compra do ingresso (1- Sim 2- Nao)? ");  
                             w = s.nextInt();
@@ -240,7 +251,12 @@ public class Interface {
                     case 2://filme(String titulo_orig, String titulo_trad, String genero, String sinopse, String nacionalidade,float tam_filme, int id, ArrayList<ator> atores, ArrayList<diretor> diretores)
                             System.out.println("");
                             for(int  i = 0; i< listaFilme.size();i++){
-                                System.out.println(listaFilme.get(i).Id+" | "+listaFilme.get(i).titulo_orig+" | "+listaFilme.get(i).titulo_trad+" | "+listaFilme.get(i).nacionalidade+" | "+listaFilme.get(i).tam_filme+ " | "+listaFilme.get(i).genero+" | "+listaFilme.get(i).sinopse+" | ");
+                                if(listaFilme.get(i).nacionalidade != "brasileiro"){
+                                    System.out.println(listaFilme.get(i).Id+" | "+listaFilme.get(i).titulo_orig+" | "+listaFilme.get(i).titulo_trad+" | "+listaFilme.get(i).nacionalidade+" | "+listaFilme.get(i).tam_filme+ " | "+listaFilme.get(i).genero+" | "+listaFilme.get(i).sinopse+" | ");
+                                }else{
+                                    System.out.println(listaFilme.get(i).Id+" | "+listaFilme.get(i).titulo_orig+" | "+listaFilme.get(i).nacionalidade+" | "+listaFilme.get(i).tam_filme+ " | "+listaFilme.get(i).genero+" | "+listaFilme.get(i).sinopse+" | ");
+                                }
+                                
                                 System.out.print("Atores: ");
                                 listaFilme.get(i).exibirAtores();
                                 System.out.print("Diretores: ");
@@ -261,13 +277,10 @@ public class Interface {
         System.out.print("\nFinalizado!\n1-Sim\n2-Não\nDeseja Continuar: ");
         opcao2 = s.nextInt(); 
         }while(opcao2 ==1);
-            for (int i = 0; i <listaFilial.size(); i++) {
-                System.out.println(""+listaFilial.get(i).nome);   
-                System.out.println(""+listaFilial.get(i).cidade);
-                System.out.println(""+listaFilial.get(i).estado);
-            }
-    }
-
-
-    
+            // for (int i = 0; i <listaFilial.size(); i++) {
+            //     System.out.println(""+listaFilial.get(i).nome);   
+            //     System.out.println(""+listaFilial.get(i).cidade);
+            //     System.out.println(""+listaFilial.get(i).estado);
+            // }
+    }   
 }
