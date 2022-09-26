@@ -6,7 +6,7 @@ public class sala extends filme{
     public int idSala;
     public String nomeSala;
     public int capacidade;
-    
+    public int filial;
 
     public sala(){
     }

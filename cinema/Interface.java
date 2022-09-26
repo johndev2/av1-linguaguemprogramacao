@@ -8,23 +8,6 @@ import cinema.pessoa;
 import cinema.filial;
 import java.util.Random;
 
-/*
-classe cinema ( localiza no brasil )
-diversas filiais-
-cidades e estados diferentes -
-
-lista de filmes (possui varios filmes em cartaz)
-salas podem exibir filmes diferentes
-classe sala ( id diferentes, capacidade )
-
-classe filme ( titulo original, titulo traduzido, genero, atores, diretores, tamanho do filme, sinopse, nacionalidae, id)
-classe ator ( nome, nacionalide, descrição(o que ele fez))
-classe diretor( nome, nacionalide, descrição( o que ele fez))
-classe cliente(nome, cpf, endereço)
-
-classe sessao( sala + filme + horario + clientes)
-*/
-
 
 public class Interface {    
     public static void main(String [] args){
@@ -47,7 +30,7 @@ public class Interface {
         opcao = s.nextInt();
         switch (opcao){
             case 1:
-                System.out.print("--------------------------\n1- Cadastrar uma filial;\n2- Cadastro filme\n3- Cadastro Sala;\n4- Cadastro Sessão;\nDigite a a opcao desejada:");
+                System.out.print("--------------------------\n1- Cadastrar uma filial;\n2- Cadastro filme\n3- Cadastro Sala;\n4- Cadastro Sessão;\n5-Imprimir lista de compra\nDigite a a opcao desejada:");
                 opcD = s.nextInt();    
                 switch (opcD) {
                     case 1:
@@ -69,7 +52,7 @@ public class Interface {
                             System.out.print("\n1-Sim\n2-Não\nO filme é nacional?");
                             opc = s.nextInt();
                             System.out.print("Informe o titulo original do filme: ");
-                            fi.titulo_orig=s.nextLine();
+                            fi.titulo_orig=s.next();
                             if(opc==2){
                                 System.out.print("Informe o titulo traduzido do filme: ");
                                 fi.titulo_trad=s.next();
@@ -109,8 +92,6 @@ public class Interface {
                                 d.nacionalidade=s.next();
                                 System.out.print("Informe a descricao do diretor: ");
                                 d.descricao=s.next();
-                                System.out.print("Informe o endereco do ator: ");
-                                d.endereco=s.next();
                                 System.out.print("Informe o codigo do diretor: ");
                                 d.codigo = s.nextInt();
                                 diretor diretor = new diretor(d.nome, d.nacionalidade, d.descricao, d.codigo);
@@ -127,7 +108,10 @@ public class Interface {
                             do{
                                 sala sa = new sala();
                                 filme fs = new filme();
+                                filial fl = new filial();
                                 System.out.println("--------------------\nCadastro de Sala!");
+                                System.out.print("Informe a filial na qual deseja cadastra a sala: ");
+                                sa.idSala = s.nextInt();
                                 System.out.print("Informe o codigo da sala: ");
                                 sa.idSala = s.nextInt();
                                 System.out.print("Informe o nome da sala: ");
@@ -195,8 +179,12 @@ public class Interface {
                                 opc = s.nextInt();
                             }while(opc!=2);
                         break;
-                     }
-
+                    case 5: //(int id, String nome, int cpf_cliente, int cod_sessao, String filme)
+                                for(int y = 0; y< listaCompra.size(); y++){
+                                    System.out.println(listaCompra.get(y).id + " | " + listaCompra.get(y).nome + " | "+ listaCompra.get(y).cpf_cliente+" | " +listaCompra.get(y).filme + " | " +listaCompra.get(y).cod_sessao);
+                                }
+                        break;
+                     } 
                 break;
             case 2:
                 System.out.print("----------------------------\n1- Comprar ingresso\n2- Mostrar lista de filmes\n3- Listar sessoes\nDigite a a opção desejada:");
@@ -213,6 +201,7 @@ public class Interface {
                             System.out.print("Deseja efetuar a compra do ingresso (1- Sim 2- Nao)? ");  
                             w = s.nextInt();
                             if(w == 1){
+                                int t;
                                 System.out.print(" Informe o nome: ");
                                 clt.nome = s.next();
                                 System.out.print(" Informe o cpf: ");
@@ -222,11 +211,15 @@ public class Interface {
                                 System.out.print("Informe a sessao do filme que deseja: ");
                                 cliente_escolha = s.nextInt();
                                 compra c = new compra();
-                                for(int t=0;t<listaSessao.size();t++){
+                                for( t=0;t<listaSessao.size();t++){
                                     if(listaSessao.get(t).idSa == cliente_escolha){
                                         c.cod_sessao= listaSessao.get(t).idSa;
                                         c.filme = listaSessao.get(t).titulo_orig;
-                                        listaSessao.get(t).capacidade-=1;
+                                        if(listaSessao.get(t).capacidade == 0){
+                                            System.out.print("Nao ha mais ingresso");
+                                            break;
+                                        }
+                                        else listaSessao.get(t).capacidade-=1;
                                         break;
                                     }
                                     int x=t+1;
@@ -234,11 +227,14 @@ public class Interface {
                                     System.out.println("Compra invalida");
                                     } 
                                 }
-                                Random numid = new Random();
-                                c.id = numid.nextInt(9999);
-                                System.out.println("O codigo de compra : "+c.id);
-                                compra compra =new compra(c.id,clt.nome, clt.CPF, c.cod_sessao, c.filme);
-                                listaCompra.add(compra);
+                                if(listaSessao.get(t).capacidade != 0){
+                                    Random numid = new Random();
+                                    c.id = numid.nextInt(9999);
+                                    System.out.println("O codigo de compra : "+c.id);
+                                    compra compra =new compra(c.id,clt.nome, clt.CPF, c.cod_sessao, c.filme);
+                                    listaCompra.add(compra);
+                                }
+                                
                             }      
                         break;
                     case 2://filme(String titulo_orig, String titulo_trad, String genero, String sinopse, String nacionalidade,float tam_filme, int id, ArrayList<ator> atores, ArrayList<diretor> diretores)
@@ -258,11 +254,9 @@ public class Interface {
                             System.out.println(listaSessao.get(i).nomeSala+ " | "+listaSessao.get(i).titulo_orig+ " | "+listaSessao.get(i).horario);                        
                         }
                         break;
-                }
-                
+                }               
                 break;  
-        }
-                            
+        }                          
         System.out.println("-------------------------------------");
         System.out.print("\nFinalizado!\n1-Sim\n2-Não\nDeseja Continuar: ");
         opcao2 = s.nextInt(); 

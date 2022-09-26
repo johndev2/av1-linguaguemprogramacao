@@ -39,14 +39,14 @@ public class filme {
 
     public void exibirDiretores(){
         for(int i=0; i< diretores.size();i++){
-			if(diretores.get(i).nacionalidade == "brasileira") System.out.println(diretores.get(i).nome+" - "+diretores.get(i).CPF+" - "+diretores.get(i).endereco+" - "+diretores.get(i).descricao);
-			else System.out.println(diretores.get(i).nome+" - "+diretores.get(i).nacionalidade+" - "+diretores.get(i).endereco+" - "+diretores.get(i).descricao);
+			if(diretores.get(i).nacionalidade == "brasileira") System.out.println(diretores.get(i).nome+" - "+diretores.get(i).CPF+" - "+diretores.get(i).descricao);
+			else System.out.println(diretores.get(i).nome+" - "+diretores.get(i).nacionalidade+" - "+diretores.get(i).descricao);
 		}
     }
     public void exibirAtores(){
         for(int i=0; i< atores.size();i++){
-			if(atores.get(i).nacionalidade == "brasileira") System.out.println(atores.get(i).nome+" - "+atores.get(i).CPF+" - "+atores.get(i).endereco+" - "+atores.get(i).descricao);
-			else System.out.println(atores.get(i).nome+" - "+atores.get(i).nacionalidade+" - "+atores.get(i).endereco+" - "+atores.get(i).descricao);
+			if(atores.get(i).nacionalidade == "brasileira") System.out.println(atores.get(i).nome+" - "+atores.get(i).CPF+" - "+atores.get(i).descricao);
+			else System.out.println(atores.get(i).nome+" - "+atores.get(i).nacionalidade+" - "+atores.get(i).descricao);
 		}
     }
 
