@@ -1,7 +1,7 @@
 package cinema;
 public class pessoa {
     public String nome;
-    public int CPF;
+    private int CPF;
     public String endereco;
     public String nacionalidade;
     public String descricao;
@@ -30,6 +30,15 @@ public class pessoa {
     public pessoa(){
 
     }
-    
+
+    public int getCPF() {
+        return CPF;
+    }
+
+
+    public void setCPF(int cPF) {
+        CPF = cPF;
+    }
+
     
 }

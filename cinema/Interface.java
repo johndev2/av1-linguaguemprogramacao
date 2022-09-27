@@ -79,7 +79,7 @@ public class Interface {
                                 a.codigo = s.nextInt();
                                 if(a.nacionalidade == "brasileira"){
                                     System.out.print("Informe o cpf do ator: ");
-                                    a.CPF = s.nextInt();
+                                    a.setCPF(s.nextInt());
                                 }
                                 ator ator = new ator(a.nome, a.nacionalidade, a.descricao, a.codigo);
                                 System.out.println("Deseja cadastra outro ator? (1-Sim 2 -Nao)");
@@ -216,7 +216,7 @@ public class Interface {
                                 System.out.print(" Informe o nome: ");
                                 clt.nome = s.next();
                                 System.out.print(" Informe o cpf: ");
-                                clt.CPF = s.nextInt();
+                                clt.setCPF(s.nextInt());
                                 System.out.print(" Informe o enderco: ");
                                 clt.endereco = s.next();
                                 System.out.print("Informe a sessao do filme que deseja: ");
@@ -242,7 +242,7 @@ public class Interface {
                                     Random numid = new Random();
                                     c.id = numid.nextInt(9999);
                                     System.out.println("O codigo de compra : "+c.id);
-                                    compra compra =new compra(c.id,clt.nome, clt.CPF, c.cod_sessao, c.filme);
+                                    compra compra =new compra(c.id,clt.nome, clt.getCPF(), c.cod_sessao, c.filme);
                                     listaCompra.add(compra);
                                 }
                                 
